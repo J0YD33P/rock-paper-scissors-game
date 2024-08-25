@@ -5,9 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1 class="game-title">Rock Paper and Scissors</h1>
+
+        <div class="scores">
+            <h2 class="score-player">0</h2>
+            <h2>-</h2>
+            <h2 class="score-cpu">0</h2>
+        </div>
+
+        <div class="selection-container">
+            <div>
+                <h2>YOU</h2>
+                <div class="player-selection"></div>
+            </div>
+            <div>
+                <h2 class="versus">VS</h2>
+            </div>
+            <div>
+                <h2>CPU</h2>
+                <div class="cpu-selection"></div>
+            </div>
+        </div>     
+    
+        <img src="./icons/rock.png" id="rock" class="icon" alt="picture of a rock" width="80px" height="80px">
+        <img src="./icons/toilet-paper.png" id="toilet-paper" class="icon" alt="picture of toilet paper" width="80px" height="80px">
+        <img src="./icons/scissors.png" id="scissors" class="icon" alt="picture of scissors" width="80px" height="80px">
+    </div>
     
 </body>
 </html>

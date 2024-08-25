@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'sectar-regular';
+    src: url('./fonts/sectar-webfont.woff2') format('woff2'),
+         url('./fonts/sectar-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #070F2B;
+}
+
+.game-title, h2{
+    font-family: 'sectar-regular', sans-serif;
+    color: white;
+    font-size: 60px;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+h2{
+    font-size: 50px;
+}
+
+.icon{
+    margin: 20px;
+    border: solid 10px #535C91;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 10px 2px #1B1A55;
+    transition-duration: 700ms;
+}
+
+.icon:hover{
+    translate: 8px;
+    box-shadow: 0 0;
+}
+
+#rock{
+    margin-left: 180px;
+}
+
+.versus{
+    margin-top: 180px;
+}
+
+.selection-container, .scores{
+    display: flex;
+    gap: 100px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.player-selection,.cpu-selection{
+    width: 300px;
+    height: 300px;
+    border: solid 10px #9290C3;
+    border-radius: 10px;
+}
