@@ -1,6 +1,6 @@
 const selection = ["rock","toilet-paper", "scissors"];
 let humanScore = 0;
-let computerScore = 0;
+let computerScore = 4;
 let humanChoice, computerChoice;
 
 function getRandomInt(max){
@@ -12,7 +12,6 @@ function getComputerChoice(){
 }
 
 const buttons = document.querySelectorAll(".icon");
-console.log(buttons);
 const imagePlayer = document.createElement("img");
 const imageCPU = document.createElement("img");
 
@@ -22,6 +21,9 @@ function showImage(imageType, imageName){
     imageType.setAttribute("style", "margin: 15px");
 }
 
+const rockBtn = document.getElementById('rock-btn');
+const paperBtn = document.getElementById('toilet-paper-btn');
+const scissorsBtn = document.getElementById('scissors-btn');
 
 buttons.forEach((button) => {
     button.addEventListener("mouseenter", () => {
@@ -30,16 +32,27 @@ buttons.forEach((button) => {
         showImage(imagePlayer, choice);
         document.querySelector(".player-selection").appendChild(imagePlayer);
 
+        if(humanScore === 5 || computerScore === 5){
+            rockBtn.style.pointerEvents = 'none';
+            paperBtn.style.pointerEvents = 'none';
+            scissorsBtn.style.pointerEvents = 'none';
+            rockBtn.style.opacity = '0.3';
+            paperBtn.style.opacity = '0.3';
+            scissorsBtn.style.opacity = '0.3';
+        }
+
     });
 
     button.addEventListener("click", () => {
-        humanChoice = button.getAttribute("id");
-        computerChoice = getComputerChoice();
-        showImage(imageCPU, computerChoice);
-        document.querySelector(".cpu-selection").appendChild(imageCPU);
-        playRound(humanChoice, computerChoice);
-    })
-})
+        if(humanScore < 5 && computerScore < 5){
+            humanChoice = button.getAttribute("id");
+            computerChoice = getComputerChoice();
+            showImage(imageCPU, computerChoice);
+            document.querySelector(".cpu-selection").appendChild(imageCPU);
+            playRound(humanChoice, computerChoice);
+        }
+    });
+});
 
 const playerSelection = document.querySelector(".player-selection");
 const cpuSelection = document.querySelector(".cpu-selection");
@@ -51,8 +64,6 @@ function playRound(humanChoice, computerChoice){
     if (humanChoice == computerChoice){
         playerSelection.setAttribute("style", "border: solid 10px #7FFFD4");
         cpuSelection.setAttribute("style", "border: solid 10px #7FFFD4")
-        // console.log("Both you and the computer chose "+humanChoice+"!");
-        // console.log("Score: You: "+humanScore+", CPU: "+computerScore);
     }
 
     else if ((humanChoice === 'rock' && computerChoice === 'scissors') 
@@ -62,16 +73,12 @@ function playRound(humanChoice, computerChoice){
             playerSelection.setAttribute("style", "border: solid 10px #7FFFD4");
             cpuSelection.setAttribute("style", "border: solid 10px #D2042D");
             playerScore.textContent = ++humanScore;
-            // console.log("Your choice was "+humanChoice+" whereas the CPU chose "+computerChoice+
-            // ". \nScore: You: "+(++humanScore)+", CPU: "+computerScore+"."); 
         }
 
     else{
         playerSelection.setAttribute("style", "border: solid 10px #D2042D");
         cpuSelection.setAttribute("style", "border: solid 10px #7FFFD4");
         cpuScore.textContent = ++computerScore;
-        // console.log("Your choice was "+humanChoice+" whereas the CPU chose "+computerChoice+
-        // ". \nScore: You: "+humanScore+", CPU: "+(++computerScore)+"."); 
     }
 
 }
