@@ -43,8 +43,10 @@ h2{
     box-shadow: 0 0;
 }
 
-#rock{
-    margin-left: 180px;
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .versus{
@@ -69,6 +71,7 @@ button {
     background: none;
     border: none;
     padding: 0;
+    user-select: none;
 }
   
 button:focus {
@@ -83,13 +86,13 @@ button:focus {
     transform: translate(-50%, -50%); /* Center the container */
     background-color: rgba(0, 0, 0, 0.8); /* Add some background color */
     color: white;
-    padding: 20px;
+    padding: 80px;
     border-radius: 10px;
     text-align: center;
     z-index: 10; /* Make sure it's on top of other content */
 }
 
-.play-again{
+.play-again-btn{
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -123,37 +126,37 @@ button:focus {
   z-index: 0;
 }
 
-.play-again:hover {
+.play-again-btn:hover {
   background: #F6F9FE;
   color: #174ea6;
 }
 
-.play-again:active {
+.play-again-btn:active {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
   outline: none;
 }
 
-.play-again:focus {
+.play-again-btn:focus {
   outline: none;
   border: 2px solid #4285f4;
 }
 
-.play-again:not(:disabled) {
+.play-again-btn:not(:disabled) {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-.play-again:not(:disabled):hover {
+.play-again-btn:not(:disabled):hover {
   box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
 
-.play-again:not(:disabled):focus {
+.play-again-btn:not(:disabled):focus {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-.play-again:not(:disabled):active {
+.play-again-btn:not(:disabled):active {
   box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
 
-.play-again:disabled {
+.play-again-btn:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
