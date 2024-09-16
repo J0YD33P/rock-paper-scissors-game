@@ -8,7 +8,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="main-container">
         <h1 class="game-title">Rock Paper and Scissors</h1>
 
         <div class="scores">
@@ -31,21 +31,24 @@
             </div>
         </div>
         
-        <button id="rock-btn">
-            <img src="./icons/rock.png" id="rock" class="icon" alt="picture of a rock" width="80px" height="80px">
-        </button>
-        <button id="toilet-paper-btn">
-            <img src="./icons/toilet-paper.png" id="toilet-paper" class="icon" alt="picture of toilet paper" width="80px" height="80px">
-        </button>
-        <button id="scissors-btn">
-            <img src="./icons/scissors.png" id="scissors" class="icon" alt="picture of scissors" width="80px" height="80px">
-        </button>
+        <div class="button-container">
+            <button id="rock-btn">
+                <img src="./icons/rock.png" id="rock" class="icon" alt="picture of a rock" width="80px" height="80px">
+            </button>
+            <button id="toilet-paper-btn">
+                <img src="./icons/toilet-paper.png" id="toilet-paper" class="icon" alt="picture of toilet paper" width="80px" height="80px">
+            </button>
+            <button id="scissors-btn">
+                <img src="./icons/scissors.png" id="scissors" class="icon" alt="picture of scissors" width="80px" height="80px">
+            </button>
+        </div>
+
         
     </div>
 
     <div class="restart-container">
         <p class="end-game-description"></p>
-        <button class="play-again">Play Again</button>
+        <button class="play-again-btn">Play Again</button>
     </div>
     
 </body>
