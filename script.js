@@ -1,6 +1,6 @@
 const selection = ["rock","toilet-paper", "scissors"];
 let humanScore = 0;
-let computerScore = 4;
+let computerScore = 0;
 let humanChoice, computerChoice;
 
 function getRandomInt(max){
@@ -9,6 +9,16 @@ function getRandomInt(max){
 
 function getComputerChoice(){
     return selection[getRandomInt(3)];
+}
+
+function disableButtons() {
+    rockBtn.style.pointerEvents = 'none';
+    paperBtn.style.pointerEvents = 'none';
+    scissorsBtn.style.pointerEvents = 'none';
+
+    rockBtn.style.opacity = '0.3';
+    paperBtn.style.opacity = '0.3';
+    scissorsBtn.style.opacity = '0.3';
 }
 
 const buttons = document.querySelectorAll(".icon");
@@ -31,16 +41,6 @@ buttons.forEach((button) => {
         let choice = button.getAttribute("id");
         showImage(imagePlayer, choice);
         document.querySelector(".player-selection").appendChild(imagePlayer);
-
-        if(humanScore === 5 || computerScore === 5){
-            rockBtn.style.pointerEvents = 'none';
-            paperBtn.style.pointerEvents = 'none';
-            scissorsBtn.style.pointerEvents = 'none';
-            rockBtn.style.opacity = '0.3';
-            paperBtn.style.opacity = '0.3';
-            scissorsBtn.style.opacity = '0.3';
-        }
-
     });
 
     button.addEventListener("click", () => {
@@ -81,26 +81,21 @@ function playRound(humanChoice, computerChoice){
         cpuScore.textContent = ++computerScore;
     }
 
+    // Check if human or computer score has reached 5, and disable buttons
+    if (humanScore === 5 || computerScore === 5) {
+        disableButtons();
+        if (humanScore > computerScore){
+            console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nCongratulations! You won!");
+        }
+        
+        else if (computerScore > humanScore){
+            console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nYou lost.")
+        }
+    }
 }
 
-// function playGame(){
 
-//     for (let round=0; round<5; round++ ){
-//         const humanSelection = humanChoice;
-//         const computerSelection = getComputerChoice();
-//         playRound(humanSelection,computerSelection);
-//     }
-// }
 
-// if (humanScore > computerScore){
-//     console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nCongratulations! You won!");
-// }
 
-// else if (computerScore > humanScore){
-//     console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nYou lost.")
-// }
 
-// else{
-//     console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nIts a draw!")
-// }
 
