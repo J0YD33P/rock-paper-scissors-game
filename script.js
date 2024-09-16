@@ -21,6 +21,30 @@ function disableButtons() {
     scissorsBtn.style.opacity = '0.3';
 }
 
+function resetGame(){
+
+    humanScore = 0;
+    computerScore = 0;
+
+    mainContainer.style.opacity = '1';
+    restartContainer.style.display = 'none';
+    imagePlayer.src = '';
+    imageCPU.src = '';
+    playerScore.textContent = 0;
+    cpuScore.textContent = 0;
+    playerSelection.style.border = 'solid 10px #9290C3';
+    cpuSelection.style.border = 'solid 10px #9290C3';
+
+    rockBtn.style.pointerEvents = 'auto';
+    paperBtn.style.pointerEvents = 'auto';
+    scissorsBtn.style.pointerEvents = 'auto';
+
+    rockBtn.style.opacity = '1';
+    paperBtn.style.opacity = '1';
+    scissorsBtn.style.opacity = '1';
+
+}
+
 const buttons = document.querySelectorAll(".icon");
 const imagePlayer = document.createElement("img");
 const imageCPU = document.createElement("img");
@@ -58,6 +82,10 @@ const playerSelection = document.querySelector(".player-selection");
 const cpuSelection = document.querySelector(".cpu-selection");
 const playerScore = document.querySelector(".score-player");
 const cpuScore = document.querySelector(".score-cpu");
+const mainContainer = document.querySelector(".main-container");
+const restartContainer = document.querySelector(".restart-container");
+const endGameDescription = document.querySelector(".end-game-description");
+const playAgainButton = document.querySelector(".play-again-btn")
 
 function playRound(humanChoice, computerChoice){
 
@@ -81,16 +109,22 @@ function playRound(humanChoice, computerChoice){
         cpuScore.textContent = ++computerScore;
     }
 
-    // Check if human or computer score has reached 5, and disable buttons
     if (humanScore === 5 || computerScore === 5) {
+
         disableButtons();
+        mainContainer.style.opacity = '0.1';
+        restartContainer.style.display = 'block';
+
         if (humanScore > computerScore){
-            console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nCongratulations! You won!");
+            endGameDescription.textContent = 'You Won!';
         }
-        
-        else if (computerScore > humanScore){
-            console.log("Final Score: You: "+humanScore+", CPU: "+computerScore+". \nYou lost.")
+        else{
+            endGameDescription.textContent = 'You Lost.';
         }
+
+        playAgainButton.addEventListener("click", () => {
+            resetGame();
+        });
     }
 }
 
