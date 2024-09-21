@@ -8,8 +8,18 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+
+    <div class="start-container">
+        <p class="start-game-description">WARNING: Loud Music</p>
+        <button class="start-game-btn">Start Game!</button>
+    </div>
+
     <div class="main-container">
         <h1 class="game-title">Rock Paper and Scissors</h1>
+
+        <audio id="background-music" autoplay muted>
+            <source src="./audio/bgmusic.mp3" type="audio/mpeg" />
+        </audio>
 
         <div class="scores">
             <h2 class="score-player">0</h2>
