@@ -3,6 +3,23 @@ let humanScore = 0;
 let computerScore = 0;
 let humanChoice, computerChoice;
 
+const playerSelection = document.querySelector(".player-selection");
+const cpuSelection = document.querySelector(".cpu-selection");
+const playerScore = document.querySelector(".score-player");
+const cpuScore = document.querySelector(".score-cpu");
+const startContainer = document.querySelector(".start-container");
+const mainContainer = document.querySelector(".main-container");
+const restartContainer = document.querySelector(".restart-container");
+const endGameDescription = document.querySelector(".end-game-description");
+const playAgainButton = document.querySelector(".play-again-btn")
+const imagePlayer = document.createElement("img");
+const imageCPU = document.createElement("img");
+const rockBtn = document.getElementById('rock-btn');
+const paperBtn = document.getElementById('toilet-paper-btn');
+const scissorsBtn = document.getElementById('scissors-btn');
+const bgMusic = document.getElementById("background-music");
+
+
 function getRandomInt(max){
     return Math.floor(Math.random() * max);
 }
@@ -21,6 +38,45 @@ function disableButtons() {
     scissorsBtn.style.opacity = '0.3';
 }
 
+function enableButtons(){
+    rockBtn.style.pointerEvents = 'auto';
+    paperBtn.style.pointerEvents = 'auto';
+    scissorsBtn.style.pointerEvents = 'auto';
+
+    rockBtn.style.opacity = '1';
+    paperBtn.style.opacity = '1';
+    scissorsBtn.style.opacity = '1';
+}
+
+function startGame(){
+    startContainer.style.display = 'none';
+    mainContainer.style.display = 'block';
+    bgMusic.muted = false;
+    bgMusic.volume = 0.6;
+    bgMusic.play();
+}
+
+function hoverButtonAudio(idChoice){
+    const audioRock = new Audio('./audio/rock.mp3');
+    const audioPaper = new Audio('./audio/paper.mp3');
+    const audioScissors = new Audio('./audio/scissors.mp3');
+
+    if(idChoice === 'rock'){
+        audioRock.play();
+    }        
+    else if (idChoice === 'toilet-paper'){
+        audioPaper.play();
+    }         
+    else{
+        audioScissors.play();
+    }
+}
+
+function selectButtonAudio(){
+    const selectButton = new Audio('./audio/selectbutton.mp3');
+    selectButton.play();
+}
+
 function resetGame(){
 
     humanScore = 0;
@@ -35,19 +91,8 @@ function resetGame(){
     playerSelection.style.border = 'solid 10px #9290C3';
     cpuSelection.style.border = 'solid 10px #9290C3';
 
-    rockBtn.style.pointerEvents = 'auto';
-    paperBtn.style.pointerEvents = 'auto';
-    scissorsBtn.style.pointerEvents = 'auto';
-
-    rockBtn.style.opacity = '1';
-    paperBtn.style.opacity = '1';
-    scissorsBtn.style.opacity = '1';
-
+    enableButtons();
 }
-
-const buttons = document.querySelectorAll(".icon");
-const imagePlayer = document.createElement("img");
-const imageCPU = document.createElement("img");
 
 function showImage(imageType, imageName){
     imageType.setAttribute("src", `./icons/${imageName}.png`);
@@ -55,19 +100,26 @@ function showImage(imageType, imageName){
     imageType.setAttribute("style", "margin: 15px");
 }
 
-const rockBtn = document.getElementById('rock-btn');
-const paperBtn = document.getElementById('toilet-paper-btn');
-const scissorsBtn = document.getElementById('scissors-btn');
+
+const startBtn = document.querySelector(".start-game-btn");
+const buttons = document.querySelectorAll(".icon");
+
+startBtn.addEventListener("click", () => {
+    startGame();
+});
 
 buttons.forEach((button) => {
     button.addEventListener("mouseenter", () => {
 
         let choice = button.getAttribute("id");
+        console.log(choice);
         showImage(imagePlayer, choice);
         document.querySelector(".player-selection").appendChild(imagePlayer);
+        hoverButtonAudio(choice);
     });
 
     button.addEventListener("click", () => {
+        selectButtonAudio();
         if(humanScore < 5 && computerScore < 5){
             humanChoice = button.getAttribute("id");
             computerChoice = getComputerChoice();
@@ -77,15 +129,6 @@ buttons.forEach((button) => {
         }
     });
 });
-
-const playerSelection = document.querySelector(".player-selection");
-const cpuSelection = document.querySelector(".cpu-selection");
-const playerScore = document.querySelector(".score-player");
-const cpuScore = document.querySelector(".score-cpu");
-const mainContainer = document.querySelector(".main-container");
-const restartContainer = document.querySelector(".restart-container");
-const endGameDescription = document.querySelector(".end-game-description");
-const playAgainButton = document.querySelector(".play-again-btn")
 
 function playRound(humanChoice, computerChoice){
 
