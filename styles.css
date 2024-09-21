@@ -17,6 +17,10 @@ body{
     background-color: #070F2B;
 }
 
+.main-container{
+  display: none;
+}
+
 .game-title, h2{
     font-family: 'sectar-regular', sans-serif;
     color: white;
@@ -78,8 +82,8 @@ button:focus {
     outline: none;
 }
 
+.start-container,
 .restart-container{
-    display: none;
     position: fixed; /* Stay in the same position relative to the viewport */
     top: 50%;
     left: 50%;
@@ -92,6 +96,11 @@ button:focus {
     z-index: 10; /* Make sure it's on top of other content */
 }
 
+.restart-container{
+  display: none;
+}
+
+.start-game-btn,
 .play-again-btn{
   align-items: center;
   appearance: none;
@@ -126,37 +135,45 @@ button:focus {
   z-index: 0;
 }
 
+.start-game-btn:hover,
 .play-again-btn:hover {
   background: #F6F9FE;
   color: #174ea6;
 }
 
+.start-game-btn:active,
 .play-again-btn:active {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
   outline: none;
 }
 
+.start-game-btn:focus,
 .play-again-btn:focus {
   outline: none;
   border: 2px solid #4285f4;
 }
 
+.start-game-btn:not(:disabled),
 .play-again-btn:not(:disabled) {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
+.start-game-btn:not(:disabled):hover,
 .play-again-btn:not(:disabled):hover {
   box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
 
+.start-game-btn:not(:disabled):focus,
 .play-again-btn:not(:disabled):focus {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
+.start-game-btn:not(:disabled):active,
 .play-again-btn:not(:disabled):active {
   box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
 
+.start-game-btn:disabled,
 .play-again-btn:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
